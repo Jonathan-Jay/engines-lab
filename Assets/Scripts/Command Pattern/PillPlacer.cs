@@ -6,10 +6,18 @@ public class PillPlacer : IFactory
 {
 	public static GameObject pill;
 
-	public GameObject PlaceShape(Vector3 position, Color color)
+	Vector3 position;
+	Color colour;
+
+	public PillPlacer(Vector3 position, Color colour) {
+		this.position = position;
+		this.colour = colour;
+	}
+
+	public GameObject PlaceShape()
 	{
 		GameObject newPill = GameObject.Instantiate(pill, position, Quaternion.identity);
-		newPill.GetComponentInChildren<MeshRenderer>().material.color = color;
+		newPill.GetComponentInChildren<MeshRenderer>().material.color = colour;
 		return newPill;
 	}
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IFactory
 {
-	GameObject PlaceShape(Vector3 position, Color colour);
+	GameObject PlaceShape();
 }

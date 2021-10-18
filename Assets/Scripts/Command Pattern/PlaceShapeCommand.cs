@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class PlaceShapeCommand : ICommand
 {
-    Vector3 position;
-    Color color;
 	IFactory factory;
     GameObject reference;
 
-    public PlaceShapeCommand(Vector3 position, Color color, IFactory factory)
+    public PlaceShapeCommand(IFactory factory)
     {
-        this.position = position;
-        this.color = color;
 		this.factory = factory;
     }
     
     public void Execute()
     {
-        reference = factory.PlaceShape(position, color);
+        reference = factory.PlaceShape();
     }
 
     public void Undo()

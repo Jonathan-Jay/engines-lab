@@ -8,15 +8,12 @@ public class InputPlane : MonoBehaviour
     RaycastHit hitInfo;
     public GameObject cubePrefab;
     public GameObject pillPrefab;
-	IFactory[] factory = new IFactory[2];
 	int currFactory = 0;
 
     // Start is called before the first frame update
     void Awake()
     {
-		factory[0] = new CubePlacer();
 		CubePlacer.cube = cubePrefab;
-		factory[1] = new PillPlacer();
 		PillPlacer.pill = pillPrefab;
 		
         maincam = Camera.main;
@@ -33,7 +30,13 @@ public class InputPlane : MonoBehaviour
                 Color c = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
                 //CubePlacer.PlaceCube(hitInfo.point, c, cubePrefab);
 
-                ICommand command = new PlaceShapeCommand(hitInfo.point, c, factory[currFactory]);
+				IFactory factory = null;
+				if (currFactory == 0)
+					factory = new CubePlacer(hitInfo.point, c);
+				else
+					factory = new PillPlacer(hitInfo.point, c);
+
+                ICommand command = new PlaceShapeCommand(factory);
                 CommandInvoker.AddCommand(command);
             }
         }
