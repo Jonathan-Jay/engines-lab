@@ -1719,6 +1719,7 @@ MonoBehaviour:
   gun: {fileID: 123990931}
   speed: 20
   despawnTime: 5
+  usingQueue: 0
 --- !u!1 &2038094806
 GameObject:
   m_ObjectHideFlags: 0
