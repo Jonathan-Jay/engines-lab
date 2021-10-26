@@ -3,7 +3,7 @@
 new Stuff:  
 Press E to shoot  
 in the Player GameObject, toggle the bool for queue usage or not  
-https://user-images.githubusercontent.com/56273460/138890054-d78c33e8-3034-4c0d-a395-3b0029929286.mp4
+click this link for a demo: https://user-images.githubusercontent.com/56273460/138890054-d78c33e8-3034-4c0d-a395-3b0029929286.mp4
 
 
 Old stuff:  
