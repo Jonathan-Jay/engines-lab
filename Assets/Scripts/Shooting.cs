@@ -11,6 +11,7 @@ public class Shooting : MonoBehaviour
 	public float speed = 100f;
 	public float despawnTime = 5f;
 	public static Shooting player;
+	public bool usingQueue;
 
 	GameObject temp = null;
 
@@ -31,11 +32,21 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) {
-			temp = bullets.Dequeue();
-			temp.SetActive(true);
-			temp.transform.position = gun.position + gun.transform.forward;
-			temp.GetComponent<Rigidbody>().velocity = gun.forward * speed;
-			bullets.Enqueue(temp);
+			if (usingQueue) {
+				temp = bullets.Dequeue();
+				temp.SetActive(true);
+				temp.transform.position = gun.position + gun.transform.forward;
+				temp.transform.rotation = gun.rotation;
+				temp.GetComponent<Rigidbody>().velocity = gun.forward * speed;
+				bullets.Enqueue(temp);
+			}
+			else {
+				temp = Instantiate(bulletPrefab, gun.position + gun.transform.forward, gun.rotation);
+				temp.GetComponent<Rigidbody>().velocity = gun.forward * speed;
+				temp.GetComponent<SelfDestruct>().die = true;
+			}
+
+			temp = null;
 		}
     }
 }

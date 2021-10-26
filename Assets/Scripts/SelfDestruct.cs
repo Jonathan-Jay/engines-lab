@@ -5,6 +5,7 @@ using UnityEngine;
 public class SelfDestruct : MonoBehaviour
 {
 	float despawnTimer;
+	public bool die = false;
 
 	void OnEnable()
 	{
@@ -17,6 +18,8 @@ public class SelfDestruct : MonoBehaviour
 		if (despawnTimer <= 0) {
 			GetComponent<Rigidbody>().velocity = Vector3.zero;
 			gameObject.SetActive(false);
+			if (die)
+				Destroy(gameObject);
 		}
     }
 }
