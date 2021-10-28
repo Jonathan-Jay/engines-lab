@@ -6,6 +6,7 @@ public class SelfDestruct : MonoBehaviour
 {
 	float despawnTimer;
 	public bool die = false;
+	GameObject particles;
 
 	void OnEnable()
 	{
@@ -16,10 +17,20 @@ public class SelfDestruct : MonoBehaviour
     {
         despawnTimer -= Time.deltaTime;
 		if (despawnTimer <= 0) {
-			GetComponent<Rigidbody>().velocity = Vector3.zero;
-			gameObject.SetActive(false);
 			if (die)
 				Destroy(gameObject);
+			else {
+				GetComponent<Rigidbody>().velocity = Vector3.zero;
+				gameObject.SetActive(false);
+			}
+
+			//particles on death
+			if (particles != null)
+				Instantiate(particles, transform.position, particles.transform.rotation);
 		}
     }
+
+	public void SetParticles(GameObject particles) {
+		this.particles = particles;
+	}
 }

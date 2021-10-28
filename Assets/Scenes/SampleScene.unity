@@ -1267,7 +1267,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1717,9 +1717,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7776575121855298138, guid: 39509373204dfee4d9a3fb00b11f97b2, type: 3}
   gun: {fileID: 123990931}
-  speed: 20
-  despawnTime: 5
-  usingQueue: 0
+  speed: 10
+  despawnTime: 2.5
+  usingQueue: 1
+  current: 0
+  particlePrefabs:
+  - {fileID: 1116343593732796247, guid: 60eddca2c58b4824690a2369b365695d, type: 3}
+  - {fileID: 8001527448467847119, guid: 2e392bd76dcd79c4b884e3765c4d0256, type: 3}
+  - {fileID: 8001527448467847119, guid: 50619ac19ffb39246828e1c897a3ad53, type: 3}
+  - {fileID: 8001527448467847119, guid: e9ffb77209cc0b246ae5a58134a70a2d, type: 3}
 --- !u!1 &2038094806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,7 +1866,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077670519}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdddba9fdfcae01458c0f1990edcd349, type: 3}
   m_Name: 
@@ -1872,7 +1878,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077670519}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 820bd23f6041fa84eba2260ddbf09de0, type: 3}
   m_Name: 

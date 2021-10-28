@@ -14,6 +14,8 @@ public class Shooting : MonoBehaviour
 	public bool usingQueue;
 
 	GameObject temp = null;
+	public int current = 0;
+	public List<GameObject> particlePrefabs;
 
     // Start is called before the first frame update
     void Start()
@@ -31,13 +33,24 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (Input.GetKeyDown(KeyCode.Alpha3)) {
+			current = (++current) % particlePrefabs.Count;
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha2)) {
+			current = (--current < 0) ? particlePrefabs.Count - 1 : current;
+		}
+
         if (Input.GetKeyDown(KeyCode.E)) {
 			if (usingQueue) {
 				temp = bullets.Dequeue();
+				temp.SetActive(false);
 				temp.SetActive(true);
 				temp.transform.position = gun.position + gun.transform.forward;
 				temp.transform.rotation = gun.rotation;
 				temp.GetComponent<Rigidbody>().velocity = gun.forward * speed;
+
+				temp.GetComponent<SelfDestruct>().SetParticles(particlePrefabs[current]);
+
 				bullets.Enqueue(temp);
 			}
 			else {
