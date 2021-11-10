@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class MarioTypeMovement : MonoBehaviour
 {
+	//returns number of enemies killed
+	public static event System.Action<int> enemyKilled;
 
     public float speed = 25;
     public float jumpStrength = 10;
     private float angle = 0;
     private bool grounded = true;
+	private int count = 0;
     private Rigidbody rigid;
 
     // Start is called before the first frame update
@@ -40,10 +43,14 @@ public class MarioTypeMovement : MonoBehaviour
         //if landing on ground
         if (other.impulse.y > 0.6f) {
             grounded = true;
+        }
+
+		//removed from grounded check
             //if touching enemy
             if (other.gameObject.tag == "Enemy") {
+				EnemySpawner.enemies.Remove(other.gameObject.GetComponent<Enemy>());
                 GameObject.Destroy(other.gameObject);
+				enemyKilled?.Invoke(++count);
             }
-        }
     }
 }

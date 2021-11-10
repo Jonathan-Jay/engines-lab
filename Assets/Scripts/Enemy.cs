@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour
 				Vector3.right * Random.Range(-1f, 1f) * speed +
 				Vector3.forward * Random.Range(-1f, 1f) * speed;
 		}
+		curDirection.y = rb.velocity.y;
 		rb.velocity = curDirection;
 	}
 }
