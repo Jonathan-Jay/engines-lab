@@ -1,5 +1,7 @@
 # engines-lab
  
+Lab 8 exercise: touch an enemy and it will day, invokes an event that sends the number of enemies killed. The popup is listening to it and changes its text when it hides away. Press M to dismiss a popup.
+ 
 new Stuff:  
 Press E to shoot  
 in the Player GameObject, toggle the bool for queue usage or not  
